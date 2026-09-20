@@ -1,1 +1,159 @@
-/* Estilos de Bity Bites — los añadimos más adelante */
+:root {
+    --fucsia: #E6198C;
+    --fucsia-oscuro: #C2137A;
+    --rosa-palo: #FBECF3;
+    --rosa-suave: #F7D9E6;
+    --texto: #3A2A32;
+    --gris: #7c6670;
+    --blanco: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: var(--rosa-palo);
+    color: var(--texto);
+    padding: 2.5rem 1rem 4rem;
+}
+
+h1 {
+    font-family: 'Grand Hotel', cursive;
+    font-weight: 400;
+    font-size: 3.6rem;
+    color: var(--fucsia);
+    text-align: center;
+    margin: 0 0 1.8rem;
+}
+
+/* ---- Formulario de crear ---- */
+form {
+    max-width: 640px;
+    margin: 0 auto 2.8rem;
+    background: var(--blanco);
+    padding: 1.6rem;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(230, 25, 140, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+form input {
+    flex: 1 1 45%;
+    min-width: 150px;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--rosa-suave);
+    border-radius: 12px;
+    font: inherit;
+    outline: none;
+    transition: border-color .2s;
+}
+
+form input:focus { border-color: var(--fucsia); }
+
+form button,
+form input[type="submit"] {
+    flex: 1 1 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--fucsia);
+    color: var(--blanco);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+form button:hover,
+form input[type="submit"]:hover { background: var(--fucsia-oscuro); }
+
+/* ---- Galería de galletas ---- */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.6rem;
+}
+
+.galleta {
+    background: var(--blanco);
+    border-radius: 22px;
+    padding: 1.3rem;
+    box-shadow: 0 6px 18px rgba(230, 25, 140, 0.10);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.galleta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(230, 25, 140, 0.18);
+}
+
+.galleta h3 {
+    margin: 0 0 0.2rem;
+    color: var(--fucsia);
+    font-size: 1.15rem;
+}
+
+.galleta p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gris);
+}
+
+/* precio (3er párrafo) destacado */
+.galleta p:nth-of-type(3) {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin-top: 0.3rem;
+}
+
+/* disponibilidad (4o párrafo) como etiqueta */
+.galleta p:nth-of-type(4) {
+    align-self: flex-start;
+    background: var(--rosa-palo);
+    color: var(--fucsia-oscuro);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+}
+
+.galleta input {
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--rosa-suave);
+    border-radius: 10px;
+    font: inherit;
+}
+
+.galleta button {
+    margin-top: 0.5rem;
+    padding: 0.55rem;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter .15s;
+}
+
+.galleta button:hover { filter: brightness(0.95); }
+
+.galleta button:first-of-type {
+    background: var(--rosa-suave);
+    color: var(--fucsia-oscuro);
+}
+
+.galleta button:last-of-type {
+    background: transparent;
+    color: #c0466e;
+    border: 1.5px solid var(--rosa-suave);
+}
