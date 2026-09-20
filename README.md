@@ -3,7 +3,7 @@
 Interfaz en **React (Vite)** para la tienda de galletas Bity Bites. Consume la API REST de la PEC 3 (Node + Express + MongoDB). Permite **listar, crear, editar y eliminar** galletas.
 
 - **API (PEC 3):** https://bity-bites-api.vercel.app · repo: `bity-bites-api`
-- **Front desplegado:** _(añadir la URL de Vercel al desplegar)_
+- **Front desplegado:** https://bity-bites-front.vercel.app
 
 ## Requisitos
 - Node.js 18+
