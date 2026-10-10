@@ -1,35 +1,56 @@
 import { useState, useContext } from "react"
-import GalletasContext from "../context/GalletasContext"
+import CarritoContext from "@/context/CarritoContext"
 
-function GalletaCard({ _id, nombre, descripcion, sabor, precio, disponible, destacada }){
+function GalletaCard({ _id, nombre, descripcion, precio, imagen, mood, categoria, disponible }){
 
-    let { editarGalleta, eliminarGalleta } = useContext(GalletasContext)
-    let [editando, setEditando] = useState(false)
-    let [nuevoNombre, setNuevoNombre] = useState(nombre)
-    let [nuevoPrecio, setNuevoPrecio] = useState(precio)
+    let { agregarAlCarrito } = useContext(CarritoContext)
+    let [imgError, setImgError] = useState(false)
+    let [cantidad, setCantidad] = useState(1)
 
-    function guardar(){
-        editarGalleta(_id, { nombre : nuevoNombre, precio : Number(nuevoPrecio) })
-        setEditando(false)
+    let foto = imagen ? "/" + imagen : null
+
+    // FUERA DEL TEMARIO: .toFixed(2) muestra siempre 2 decimales en el precio (2.20 € en vez de 2.2 €).
+    // Hecho con ayuda de IA (Claude). Documentación: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+    // .replace(".", ",") pone la coma decimal española: 2.20 -> 2,20
+    let precioTexto = precio.toFixed(2).replace(".", ",") + " €"
+
+    function anadir(){
+        agregarAlCarrito({ _id, nombre, precio, imagen }, cantidad)
+        setCantidad(1)
     }
 
-    if(editando){
-        return <article className="galleta">
-            <input value={nuevoNombre} onChange={ e => setNuevoNombre(e.target.value) } />
-            <input type="number" value={nuevoPrecio} onChange={ e => setNuevoPrecio(e.target.value) } />
-            <button onClick={guardar}>Guardar</button>
-            <button onClick={ () => setEditando(false) }>Cancelar</button>
-        </article>
-    }
+    return <article className="cookie-card">
+        { categoria === "especial" && <span className="badge-especial">Rellena ✦</span> }
 
-    return <article className="galleta">
-        <h3>{ nombre } { destacada ? "⭐" : "" }</h3>
-        <p>{ descripcion }</p>
-        <p>Sabor: { sabor }</p>
-        <p>{ precio } €</p>
-        <p>{ disponible ? "Disponible" : "Agotada" }</p>
-        <button onClick={ () => setEditando(true) }>Editar</button>
-        <button onClick={ () => eliminarGalleta(_id) }>Borrar</button>
+        <div className="cookie-media">
+            {
+                foto && !imgError
+                ? <img className="cookie-img" src={foto} alt={nombre} onError={ () => setImgError(true) } />
+                : <div className="cookie-placeholder">🍪</div>
+            }
+        </div>
+
+        <div className="cookie-info">
+            { mood && <span className="mood">♪ { mood }</span> }
+            <h3>{ nombre }</h3>
+            <p className="desc">{ descripcion }</p>
+
+            <div className="cookie-pie">
+            <span className="precio">{ precioTexto }</span>
+            {
+                disponible
+                ? <div className="cookie-acciones">
+                    <div className="stepper-card">
+                        <button onClick={ () => setCantidad( anterior => Math.max(1, anterior - 1) ) } aria-label="menos">−</button>
+                        <span>{ cantidad }</span>
+                        <button onClick={ () => setCantidad( anterior => anterior + 1 ) } aria-label="más">+</button>
+                    </div>
+                    <button className="btn-add" onClick={anadir}>Añadir</button>
+                </div>
+                : <button className="btn-add agotada" disabled>Agotada</button>
+            }
+            </div>
+        </div>
     </article>
 }
 
