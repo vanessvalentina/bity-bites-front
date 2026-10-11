@@ -207,7 +207,7 @@ export const PRIVACIDAD = [
     },
     {
         titulo : "Cookies",
-        texto : "Esta web no usa cookies de publicidad ni de estadísticas. La sesión se guarda solo mientras tienes la página abierta. Las playlists de Spotify solo se cargan si pulsas para escucharlas; en ese momento es Spotify quien puede usar sus propias cookies."
+        texto : "Esta web no usa cookies de publicidad ni de estadísticas. Para saber cuántas visitas recibe usamos Vercel Web Analytics, que cuenta las páginas vistas de forma anónima, sin cookies y sin guardar nada en tu dispositivo. La sesión se guarda solo mientras tienes la página abierta. Las playlists de Spotify solo se cargan si pulsas para escucharlas; en ese momento es Spotify quien puede usar sus propias cookies."
     }
 ]
 
