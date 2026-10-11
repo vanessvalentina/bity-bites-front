@@ -2,7 +2,18 @@ import { useState } from "react"
 import ModalEditar from "@/components/ModalEditar"
 import ModalBorrar from "@/components/ModalBorrar"
 
-// Como Color.jsx de clase: cada galleta con sus botones y sus modales de editar/borrar
+/**
+ * Una galleta en la lista del panel de Gabriela, con sus botones de editar y borrar (como Color.jsx de clase).
+ * @prop     {String}   _id          Id de la galleta en MongoDB
+ * @prop     {String}   nombre       Nombre de la galleta
+ * @prop     {String}   descripcion  Descripción
+ * @prop     {String}   sabor        Sabor
+ * @prop     {Number}   precio       Precio en euros
+ * @prop     {Boolean}  disponible   Si está a la venta
+ * @prop     {String}   playlistUrl  Enlace a su playlist de Spotify
+ * @hook     {useState} editando: abre el ModalEditar
+ * @hook     {useState} borrando: abre el ModalBorrar
+ */
 function GalletaAdmin({ _id, nombre, descripcion, sabor, precio, disponible, playlistUrl }){
 
     let [editando, setEditando] = useState(false)

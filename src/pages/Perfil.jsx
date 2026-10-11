@@ -8,6 +8,12 @@ import { API_URL } from "@/const/constantes"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
+/**
+ * Página "Mi cuenta" del cliente: sus pedidos y editar perfil.
+ * @hook     {useContext} SesionContext: token, usuario y cerrarSesion
+ * @hook     {useState}   pestana: "pedidos" o "editar"
+ * @hook     {useFetch}   mis pedidos desde la API (ruta protegida)
+ */
 function Perfil(){
 
     let { token, usuario, cerrarSesion } = useContext(SesionContext)

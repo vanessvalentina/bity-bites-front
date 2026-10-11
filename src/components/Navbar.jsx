@@ -7,7 +7,13 @@ import IconoCarrito from "@/components/IconoCarrito"
 import AvisoRegistro from "@/components/AvisoRegistro"
 import { NAV_ENLACES } from "@/const/constantes"
 
-// Navbar de cristal (glass) con megamenú: al pasar el ratón por una sección se ve una vista previa
+/**
+ * Barra de navegación de cristal con megamenú (vista previa al pasar el ratón) y menú ☰ en móvil.
+ * @hook     {useContext} CarritoContext: unidades del carrito para el contador
+ * @hook     {useContext} SesionContext: enseñar Entrar / Mi cuenta / Panel
+ * @hook     {useState}   abierto: menú del móvil abierto o cerrado
+ * @hook     {useEffect}  tecla Escape para cerrar el menú, con cleanup (removeEventListener)
+ */
 function Navbar(){
 
     let { carrito } = useContext(CarritoContext)

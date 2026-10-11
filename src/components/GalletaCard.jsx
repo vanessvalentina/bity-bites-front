@@ -1,6 +1,20 @@
 import { useState, useContext } from "react"
 import CarritoContext from "@/context/CarritoContext"
 
+/**
+ * Tarjeta de una galleta del catálogo con selector de cantidad y botón "Añadir" al carrito.
+ * @prop     {String}   _id          Id de la galleta
+ * @prop     {String}   nombre       Nombre
+ * @prop     {String}   descripcion  Descripción sensorial
+ * @prop     {Number}   precio       Precio en euros
+ * @prop     {String}   imagen       Ruta de la foto (render sin fondo)
+ * @prop     {String}   mood         Mood de la galleta (Cozy, Intenso…)
+ * @prop     {String}   categoria    "clasica" o "especial"
+ * @prop     {Boolean}  disponible   Si se puede comprar
+ * @hook     {useContext} CarritoContext: agregarAlCarrito
+ * @hook     {useState}   imgError: si la foto no carga se enseña un icono
+ * @hook     {useState}   cantidad: unidades elegidas antes de añadir
+ */
 function GalletaCard({ _id, nombre, descripcion, precio, imagen, mood, categoria, disponible }){
 
     let { agregarAlCarrito } = useContext(CarritoContext)

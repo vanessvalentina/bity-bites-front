@@ -3,7 +3,10 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { PRIVACIDAD } from "@/const/constantes"
 
-// Política de privacidad (RGPD): explica qué datos se recogen y para qué
+/**
+ * Página de política de privacidad (RGPD): qué datos se recogen y para qué.
+ * @hook     {useEffect}  subir arriba del todo al entrar
+ */
 function Privacidad(){
 
     // Al entrar en la página, empezar arriba del todo

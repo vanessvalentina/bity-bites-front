@@ -2,7 +2,14 @@ import { useState, useContext } from "react"
 import SesionContext from "@/context/SesionContext"
 import { actualizarPerfil, cambiarPassword, textoError } from "@/services/api"
 
-// Editar mis datos y cambiar mi contraseña (lo usan el cliente en Mi cuenta y Gabriela en su panel)
+/**
+ * Formularios para editar mis datos y cambiar mi contraseña (cliente en "Mi cuenta" y Gabriela en su panel).
+ * @hook     {useContext}  SesionContext: token, usuario y actualizarUsuario
+ * @hook     {useState}    datos: nombre, email, teléfono y dirección (agrupados)
+ * @hook     {useState}    avisoDatos: mensaje de ok / error del formulario de datos
+ * @hook     {useState}    claves: contraseña actual, nueva y repetida (agrupadas)
+ * @hook     {useState}    avisoClave: mensaje de ok / error del formulario de contraseña
+ */
 function EditarPerfil(){
 
     let { token, usuario, actualizarUsuario } = useContext(SesionContext)

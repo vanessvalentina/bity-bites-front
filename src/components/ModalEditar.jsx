@@ -3,7 +3,20 @@ import GalletasContext from "@/context/GalletasContext"
 import SesionContext from "@/context/SesionContext"
 import { actualizarGalleta } from "@/services/api"
 
-// Como ModalEditar.jsx de clase (colores-react)
+/**
+ * Ventana para editar una galleta (Update del CRUD), como ModalEditar.jsx de clase.
+ * @prop     {String}    _id          Id de la galleta
+ * @prop     {String}    nombre       Valores actuales que se editan…
+ * @prop     {String}    descripcion
+ * @prop     {Number}    precio
+ * @prop     {Boolean}   disponible
+ * @prop     {String}    playlistUrl  Enlace de Spotify (opcional)
+ * @prop     {Function}  setEditando  Cierra la ventana
+ * @hook     {useContext} GalletasContext: editarGalleta
+ * @hook     {useContext} SesionContext: token
+ * @hook     {useState}   formulario: los campos editados (agrupados)
+ * @hook     {useState}   error: aviso si algo no es válido
+ */
 function ModalEditar({ _id, nombre, descripcion, precio, disponible, playlistUrl = "", setEditando }){
 
     let { editarGalleta } = useContext(GalletasContext)

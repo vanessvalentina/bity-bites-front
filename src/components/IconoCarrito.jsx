@@ -1,4 +1,7 @@
-// Componente stateless: icono de bolsa de la compra dibujado en SVG (sustituye al emoji 🛍️)
+/**
+ * Componente stateless: icono SVG de la bolsa del carrito.
+ * @prop     {Number}  size  Tamaño en píxeles (24 por defecto)
+ */
 function IconoCarrito({ size = 24 }){
     return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

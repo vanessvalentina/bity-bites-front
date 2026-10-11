@@ -6,6 +6,13 @@ import { crearPedido, textoError } from "@/services/api"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
+/**
+ * Página "Tu combo": carrito + formulario para hacer el pedido (invitado o con cuenta).
+ * @hook     {useContext} CarritoContext: carrito y funciones para cambiarlo
+ * @hook     {useContext} SesionContext: token y datos del usuario para rellenar el formulario
+ * @hook     {useState}   formulario: datos del pedido (agrupados)
+ * @hook     {useState}   envio: enviando, error y pedido confirmado (agrupados)
+ */
 function Carrito(){
 
     let { carrito, cambiarCantidad, quitarDelCarrito, vaciarCarrito } = useContext(CarritoContext)

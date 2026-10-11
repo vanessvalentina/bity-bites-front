@@ -9,6 +9,15 @@ import Footer from "@/components/Footer"
 import { SECCIONES_CATALOGO, STICKERS_HERO2, PACK_TRES, GABRIELA_PROCESO } from "@/const/constantes"
 import PasoProceso from "@/components/PasoProceso"
 
+/**
+ * Página de inicio: hero, catálogo con filtro, preview de packs y making of.
+ * @hook     {useContext} GalletasContext: galletas, cargando y error
+ * @hook     {useContext} CarritoContext: agregarAlCarrito (pack de 3)
+ * @hook     {useState}   filtro: "todas" / "clasica" / "especial"
+ * @hook     {useState}   packAnadido: aviso "¡Añadido!" del pack
+ * @hook     {useEffect}  bajar al catálogo si se llega con /#catalogo
+ * @hook     {useEffect}  parallax con el ratón, con cleanup (removeEventListener)
+ */
 function Inicio(){
 
     let { galletas, cargando, error } = useContext(GalletasContext)
@@ -92,7 +101,7 @@ function Inicio(){
                     {/* Foto de las cookies sobre un "blob" de color; se mueve con el ratón (parallax) */}
                     <div className="hero2-foto">
                         <div className="hero2-blob"></div>
-                        <img className="hero2-cookies" src="/hero/image_hero.png" alt="Cookies de Bity Bites" />
+                        <img className="hero2-cookies" src="/hero/image_hero.webp" alt="Cookies de Bity Bites" />
                         {
                             STICKERS_HERO2.map( s => <img key={s} className={ "stk2 stk2-" + s } src={ "/hero/st_" + s + ".png" } alt="" aria-hidden="true" /> )
                         }

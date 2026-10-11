@@ -1,3 +1,9 @@
+/*-----------------------------------------------------------------------*\
+ * const/constantes.js — constantes de la tienda en UPPER_SNAKE_CASE
+ *   API_URL, PACK_TRES, SECCIONES_CATALOGO, STICKERS_HERO2, ENCARGOS, ESTADOS_PEDIDO,
+ *   NAV_ENLACES (megamenú), CONTACTO_TIENDA, ENLACES_FOOTER, textos de Gabriela,
+ *   NY_COOKIE, TIPOS_CONTACTO, MOODS_MUSICA y PRIVACIDAD
+ *-----------------------------------------------------------------------*/
 // Constantes de la tienda, todas juntas y en UPPER_SNAKE_CASE (rúbrica: Arquitectura > Constantes)
 
 // URL de la API: viene del archivo .env (VITE_API_URL), nunca escrita a fuego en el código

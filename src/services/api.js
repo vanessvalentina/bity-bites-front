@@ -1,3 +1,12 @@
+/*-----------------------------------------------------------------------*\
+ * services/api.js — todas las peticiones a la API con fetch (como en clase)
+ *   - Galletas:  crearGalleta, actualizarGalleta, borrarGalleta        (solo admin, con token)
+ *   - Usuarios:  login, registro, actualizarPerfil, cambiarPassword
+ *   - Pedidos:   crearPedido (invitado o cliente), cambiarEstadoPedido (admin)
+ *   - Mensajes:  crearMensaje (público), marcarMensaje, borrarMensaje (admin)
+ *   - textoError: convierte cualquier error en un texto para enseñarlo en pantalla
+ *   Las lecturas (GET) se hacen con el hook useFetch.
+ *-----------------------------------------------------------------------*/
 import { API_URL } from "@/const/constantes"
 // La URL base de la API está en las constantes (sale de la variable de entorno VITE_API_URL)
 

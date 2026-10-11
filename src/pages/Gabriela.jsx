@@ -7,7 +7,10 @@ import PasoProceso from "@/components/PasoProceso"
 import Flecha from "@/components/Flecha"
 import { GABRIELA_SALUDO, GABRIELA_INTRO, GABRIELA_PREGUNTA, NY_COOKIE, GABRIELA_PROCESO, INSTAGRAM_URL } from "@/const/constantes"
 
-// Página "Sobre Gabriela": quién hace las galletas y cómo se hacen
+/**
+ * Página "Sobre Gabriela": quién hace las galletas, cómo es una NY cookie y el making of.
+ * @hook     {useEffect}  subir arriba del todo al entrar
+ */
 function Gabriela(){
 
     // Al entrar en la página, empezar arriba del todo
@@ -78,7 +81,7 @@ function Gabriela(){
 
             {/* 4. Frase de marca + llamada a la acción */}
             <section className="gabi-frase">
-                <img src="/reales/galletas_6.png" alt="Bolsa de Bity Bites al atardecer desde el tren" loading="lazy" />
+                <img src="/reales/galletas_6.jpg" alt="Bolsa de Bity Bites al atardecer desde el tren" loading="lazy" />
                 <div>
                     <p>Galletas con intención</p>
                     <h2>Conecta con cada mordida</h2>

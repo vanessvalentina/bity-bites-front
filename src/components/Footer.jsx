@@ -2,7 +2,10 @@ import { Link } from "react-router-dom"
 import LogoB from "@/components/LogoB"
 import { CONTACTO_TIENDA, ENLACES_FOOTER, INSTAGRAM_URL } from "@/const/constantes"
 
-// Footer (componente stateless): contacto rápido + resumen de todas las secciones
+/**
+ * Footer (stateless): contacto rápido (móvil, Instagram, playlist, dirección) y resumen de secciones.
+ * Los datos salen de las constantes CONTACTO_TIENDA y ENLACES_FOOTER.
+ */
 function Footer(){
 
     let { telefono, instagram, direccion, playlist } = CONTACTO_TIENDA

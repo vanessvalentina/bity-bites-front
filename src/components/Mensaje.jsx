@@ -1,6 +1,19 @@
 import { TIPOS_CONTACTO } from "@/const/constantes"
 
-// Un mensaje de Contacto en el panel de Gabriela (recibe las props deconstruidas)
+/**
+ * Un mensaje del formulario de Contacto en el panel de Gabriela.
+ * @prop     {String}    _id          Id del mensaje
+ * @prop     {String}    nombre       Quién escribe
+ * @prop     {String}    email        Email de contacto
+ * @prop     {String}    telefono     Teléfono (opcional)
+ * @prop     {String}    tipo         encargo / cumpleanos / empresa / duda
+ * @prop     {String}    fechaEvento  Para cuándo lo quiere (opcional)
+ * @prop     {String}    mensaje      Texto del mensaje
+ * @prop     {Boolean}   leido        Si Gabriela ya lo ha leído
+ * @prop     {String}    fecha        Cuándo se recibió
+ * @prop     {Function}  marcar       Marca como leído / no leído (viene de Admin)
+ * @prop     {Function}  borrar       Borra el mensaje (viene de Admin)
+ */
 function Mensaje({ _id, nombre, email, telefono, tipo, fechaEvento, mensaje, leido, fecha, marcar, borrar }){
 
     // FUERA DEL TEMARIO: .find() busca el texto del tipo de consulta. Hecho con ayuda de IA (Claude).

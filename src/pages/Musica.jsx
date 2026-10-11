@@ -11,8 +11,13 @@ function idPlaylist(enlace){
     return enlace.split("/playlist/")[1].split("?")[0]
 }
 
-// Página "Conecta con cada mordida": eliges el mood de tu galleta y suena su playlist.
-// También es el destino del QR del empaque: /momento?mood=cozy (o ?galleta=<id>) abre directamente la de esa galleta.
+/**
+ * Página "Conecta con cada mordida": eliges el mood de tu galleta y suena su playlist de Spotify.
+ * Es también el destino de los QR del empaque: /momento?mood=cozy
+ * @hook     {useFetch}   galletas con su playlistUrl (siempre datos frescos)
+ * @hook     {useState}   eleccion: galleta elegida y si ya pulsó "Escuchar" (agrupados)
+ * @hook     {useEffect}  subir arriba del todo al entrar
+ */
 function Musica(){
 
     // Se piden las galletas otra vez al entrar (hook personalizado): así siempre salen las playlists

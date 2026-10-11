@@ -1,6 +1,8 @@
 import LogoB from "@/components/LogoB"
 
-// Componente stateless (sin estado): se ve mientras Suspense carga una página
+/**
+ * Componente stateless que se enseña mientras Suspense carga una página (fallback).
+ */
 function Cargando(){
     return <div className="cargando">
         <LogoB size={64} />

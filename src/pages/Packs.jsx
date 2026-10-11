@@ -6,6 +6,15 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { PACK_TRES, ENCARGOS } from "@/const/constantes"
 
+/**
+ * Página de Packs: pack de 3 clásicas, "Arma tu caja" y encargos/regalos.
+ * @hook     {useContext} GalletasContext: galletas para armar la caja
+ * @hook     {useContext} CarritoContext: agregarAlCarrito y agregarVarios
+ * @hook     {useState}   pack: cantidad y aviso "¡Añadido!" (agrupados)
+ * @hook     {useState}   caja: lista de galletas elegidas con su cantidad
+ * @hook     {useState}   cajaAnadida: aviso "¡Caja añadida!"
+ * @hook     {useEffect}  ir a #encargos o arriba del todo al entrar
+ */
 function Packs(){
 
     let { galletas } = useContext(GalletasContext)

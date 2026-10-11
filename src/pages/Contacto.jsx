@@ -7,7 +7,12 @@ import { TIPOS_CONTACTO, INSTAGRAM_URL } from "@/const/constantes"
 
 const FORMULARIO_VACIO = { nombre : "", email : "", telefono : "", tipo : "encargo", fecha : "", mensaje : "", privacidad : false }
 
-// Página de Contacto: el mensaje se guarda en MongoDB y Gabriela lo ve en su panel
+/**
+ * Página de Contacto: el mensaje se guarda en MongoDB y Gabriela lo ve en su panel.
+ * @hook     {useState}   formulario: datos del mensaje (agrupados)
+ * @hook     {useState}   envio: enviando, error y enviado (agrupados)
+ * @hook     {useEffect}  subir arriba del todo al entrar
+ */
 function Contacto(){
 
     // Datos del formulario agrupados en un solo useState

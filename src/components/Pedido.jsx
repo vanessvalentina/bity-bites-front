@@ -3,7 +3,21 @@ import GalletasContext from "@/context/GalletasContext"
 import { ESTADOS_PEDIDO } from "@/const/constantes"
 
 
-// Lo usan el Perfil (cliente) y el panel de Gabriela (admin = true: ve el contacto y cambia el estado)
+/**
+ * Un pedido (en "Mis pedidos" del cliente y en el panel de Gabriela).
+ * @prop     {String}    _id            Id del pedido
+ * @prop     {String}    fecha          Cuándo se hizo
+ * @prop     {Array}     items          Galletas / packs con cantidad y precio
+ * @prop     {Number}    total          Total en euros
+ * @prop     {String}    estado         pendiente / preparando / listo / entregado / cancelado
+ * @prop     {String}    entrega        "recogida" o "envio"
+ * @prop     {String}    direccion      Dirección de envío
+ * @prop     {String}    notas          Notas del cliente
+ * @prop     {Object}    contacto       { nombre, email, telefono } (solo lo ve Gabriela)
+ * @prop     {Boolean}   admin          Si lo ve Gabriela (puede cambiar el estado)
+ * @prop     {Function}  cambiarEstado  Cambia el estado (solo admin)
+ * @hook     {useContext} GalletasContext: nombre de las galletas de pedidos antiguos
+ */
 function Pedido({ _id, fecha, items, total, estado, entrega, direccion, notas, contacto, admin, cambiarEstado }){
 
     let { galletas } = useContext(GalletasContext)

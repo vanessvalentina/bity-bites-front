@@ -13,6 +13,13 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { ESTADOS_ACTIVOS, API_URL } from "@/const/constantes"
 
+/**
+ * Página del panel de Gabriela (solo rol admin): pedidos, mensajes, catálogo (CRUD) y su cuenta.
+ * @hook     {useContext} GalletasContext: lista de galletas del catálogo
+ * @hook     {useContext} SesionContext: token, usuario y cerrarSesion
+ * @hook     {useState}   vista: pestaña elegida y filtro de pedidos (agrupados)
+ * @hook     {useFetch}   pedidos y mensajes desde la API (rutas protegidas)
+ */
 function Admin(){
 
     let { galletas } = useContext(GalletasContext)

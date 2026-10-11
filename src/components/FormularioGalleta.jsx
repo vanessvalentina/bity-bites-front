@@ -3,6 +3,12 @@ import GalletasContext from "@/context/GalletasContext"
 import SesionContext from "@/context/SesionContext"
 import { crearGalleta } from "@/services/api"
 
+/**
+ * Formulario del panel de Gabriela para crear una galleta nueva (Create del CRUD).
+ * @hook     {useContext}  GalletasContext: agregarGalleta para añadirla a la lista
+ * @hook     {useContext}  SesionContext: token para la petición protegida
+ * @hook     {useState}    formulario: nombre, descripción, sabor y precio (agrupados)
+ */
 function FormularioGalleta(){
 
     let { agregarGalleta } = useContext(GalletasContext)

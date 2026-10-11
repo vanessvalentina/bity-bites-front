@@ -7,6 +7,14 @@ import { login, registro, textoError } from "@/services/api"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
+/**
+ * Página de login y registro (contraseñas con bcrypt en la API).
+ * @hook     {useContext} SesionContext: token, usuario e iniciarSesion
+ * @hook     {useContext} CarritoContext: si hay carrito, volver a él tras entrar
+ * @hook     {useState}   modo: "entrar" o "registro"
+ * @hook     {useState}   envio: enviando y error (agrupados)
+ * @hook     {useState}   formulario: nombre, email, contraseña y privacidad (agrupados)
+ */
 function Login(){
 
     let { token, usuario, iniciarSesion } = useContext(SesionContext)

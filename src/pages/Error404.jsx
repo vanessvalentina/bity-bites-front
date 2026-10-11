@@ -3,7 +3,9 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import LogoB from "@/components/LogoB"
 
-// Página para rutas que no existen (errorElement del router, como en clase)
+/**
+ * Página para rutas que no existen (errorElement del router, como en clase).
+ */
 function Error404(){
     return <>
         <Navbar />

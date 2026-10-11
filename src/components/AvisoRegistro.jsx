@@ -7,8 +7,13 @@ const SEGUNDOS_ESPERA = 8
 // Páginas donde NO tiene sentido enseñar el aviso
 const RUTAS_SIN_AVISO = ["/login", "/admin", "/perfil"]
 
-// Ventana en el centro que invita a registrarse tras unos segundos navegando.
-// Sale una sola vez por visita (se recuerda en sessionStorage) y nunca si ya hay sesión.
+/**
+ * Ventana "¿Te unes al club?" que invita a registrarse tras unos segundos navegando.
+ * Sale una sola vez por visita y nunca si ya hay sesión o en login / admin / perfil.
+ * @hook     {useContext}  SesionContext: saber si hay usuario con sesión
+ * @hook     {useState}    visible: si la ventana se enseña o no
+ * @hook     {useEffect}   temporizador de SEGUNDOS_ESPERA con su cleanup (clearTimeout)
+ */
 function AvisoRegistro(){
 
     let { usuario } = useContext(SesionContext)
@@ -46,7 +51,7 @@ function AvisoRegistro(){
 
             <div className="aviso-imagen">
                 <img src="/render/vainilla.png" alt="" />
-                <span className="aviso-sello"><LogoB size={46} /></span>
+                <span className="aviso-sello"><LogoB size={34} /></span>
             </div>
 
             <span className="eyebrow">Cookie club</span>

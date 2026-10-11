@@ -1,4 +1,18 @@
-import { useState, lazy, Suspense } from "react"
+/*-----------------------------------------------------------------------*\
+ * App.jsx — Bity Bites Cookies (tienda de NY cookies de Gabriela, Valdemoro)
+ *   Hooks:
+ *    - useState (sesión y carrito), useEffect (guardar carrito en localStorage), useFetch (galletas)
+ *    - lazy + Suspense (cada página se carga solo cuando se visita)
+ *   Datos:
+ *    - API fetch a VITE_API_URL (bity-bites-api.vercel.app/api): galletas, usuarios, pedidos, mensajes
+ *    - localStorage: carrito ("bitybites-carrito") y catálogo ("bitybites-galletas")
+ *   Estructura:
+ *    - Contextos: SesionContext, GalletasContext, CarritoContext
+ *    - Páginas (pages/): Inicio, Packs, Musica, Gabriela, Contacto, Carrito, Login, Perfil,
+ *      Admin, Privacidad, Error404
+ *    - Cada página lleva Navbar arriba y Footer abajo
+ *-----------------------------------------------------------------------*/
+import { useState, useEffect, lazy, Suspense } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import GalletasContext from "@/context/GalletasContext"
 import CarritoContext from "@/context/CarritoContext"
@@ -21,7 +35,20 @@ const Privacidad = lazy(() => import("@/pages/Privacidad"))
 const Musica = lazy(() => import("@/pages/Musica"))
 const Error404 = lazy(() => import("@/pages/Error404"))
 
-// Rutas de la tienda (como en la carpeta "router" de clase)
+/**
+ * React-router (createBrowserRouter + RouterProvider, como en la carpeta "router" de clase)
+ *
+ * @route   {/}            Cargamos el componente <Inicio />    (errorElement: <Error404 />)
+ * @route   {/packs}       Cargamos el componente <Packs />
+ * @route   {/carrito}     Cargamos el componente <Carrito />
+ * @route   {/login}       Cargamos el componente <Login />     (?modo=registro abre el registro)
+ * @route   {/perfil}      Cargamos el componente <Perfil />    (solo con sesión)
+ * @route   {/admin}       Cargamos el componente <Admin />     (solo rol admin)
+ * @route   {/momento}     Cargamos el componente <Musica />    (?mood=cozy desde los QR)
+ * @route   {/gabriela}    Cargamos el componente <Gabriela />
+ * @route   {/privacidad}  Cargamos el componente <Privacidad />
+ * @route   {/contacto}    Cargamos el componente <Contacto />
+ */
 const router = createBrowserRouter([
     {
         path : "/",
@@ -66,7 +93,13 @@ const router = createBrowserRouter([
     }
 ])
 
-// Componente con estado (stateful): guarda sesión, galletas y carrito y los reparte con Context
+/**
+ * Componente principal (stateful): guarda sesión, galletas y carrito y los reparte con Context.
+ * @hook     {useState}   sesion: token y usuario (agrupados)
+ * @hook     {useFetch}   galletas del catálogo (con caché en localStorage)
+ * @hook     {useState}   carrito: líneas del carrito (se recuerda en localStorage)
+ * @hook     {useEffect}  guarda el carrito en localStorage cada vez que cambia
+ */
 function App(){
 
     // ---- Sesión (login) ----
@@ -88,7 +121,7 @@ function App(){
     }
 
     // ---- Galletas (catálogo) con el hook personalizado ----
-    let { datos : galletas, cargando, error, setDatos : setGalletas } = useFetch(API_URL + "/galletas")
+    let { datos : galletas, cargando, error, setDatos : setGalletas } = useFetch(API_URL + "/galletas", null, "bitybites-galletas")
 
     // Estas tres solo cambian el estado; la petición a la API la hace el componente
     // que las llama (FormularioGalleta, ModalEditar, ModalBorrar).
@@ -106,7 +139,22 @@ function App(){
     }
 
     // ---- Carrito "Tu combo" ----
-    let [carrito, setCarrito] = useState([])
+    // Se guarda en localStorage: si recargas la página o vuelves otro día, tu combo sigue ahí
+    let [carrito, setCarrito] = useState( () => {
+        try{
+            return JSON.parse(localStorage.getItem("bitybites-carrito")) || []
+        }catch(e){
+            return []
+        }
+    })
+
+    useEffect(() => {
+        try{
+            localStorage.setItem("bitybites-carrito", JSON.stringify(carrito))
+        }catch(e){
+            // sin localStorage el carrito funciona igual, solo que no se recuerda
+        }
+    }, [carrito])
 
     // Suma una galleta (o el pack) a una lista de carrito: si ya está, aumenta la cantidad
     function sumarAlCarrito(lista, galleta, cantidad){
