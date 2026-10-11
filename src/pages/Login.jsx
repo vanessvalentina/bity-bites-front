@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { Navigate, Link } from "react-router-dom"
 import SesionContext from "@/context/SesionContext"
 import CarritoContext from "@/context/CarritoContext"
@@ -14,8 +14,14 @@ import Footer from "@/components/Footer"
  * @hook     {useState}   modo: "entrar" o "registro"
  * @hook     {useState}   envio: enviando y error (agrupados)
  * @hook     {useState}   formulario: nombre, email, contraseña y privacidad (agrupados)
+ * @hook     {useEffect}  subir arriba del todo al entrar
  */
 function Login(){
+
+    // Al entrar en la página, empezar arriba del todo (si no, se queda el scroll de la página anterior)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     let { token, usuario, iniciarSesion } = useContext(SesionContext)
     let { carrito } = useContext(CarritoContext)

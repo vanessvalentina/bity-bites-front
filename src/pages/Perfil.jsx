@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Navigate, Link } from "react-router-dom"
 import SesionContext from "@/context/SesionContext"
 import Pedido from "@/components/Pedido"
@@ -13,8 +13,14 @@ import Footer from "@/components/Footer"
  * @hook     {useContext} SesionContext: token, usuario y cerrarSesion
  * @hook     {useState}   pestana: "pedidos" o "editar"
  * @hook     {useFetch}   mis pedidos desde la API (ruta protegida)
+ * @hook     {useEffect}  subir arriba del todo al entrar
  */
 function Perfil(){
+
+    // Al entrar en la página, empezar arriba del todo (si no, se queda el scroll de la página anterior)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     let { token, usuario, cerrarSesion } = useContext(SesionContext)
     // "pedidos" o "editar"

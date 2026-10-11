@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { Navigate } from "react-router-dom"
 import GalletasContext from "@/context/GalletasContext"
 import SesionContext from "@/context/SesionContext"
@@ -19,8 +19,14 @@ import { ESTADOS_ACTIVOS, API_URL } from "@/const/constantes"
  * @hook     {useContext} SesionContext: token, usuario y cerrarSesion
  * @hook     {useState}   vista: pestaña elegida y filtro de pedidos (agrupados)
  * @hook     {useFetch}   pedidos y mensajes desde la API (rutas protegidas)
+ * @hook     {useEffect}  subir arriba del todo al entrar
  */
 function Admin(){
+
+    // Al entrar en la página, empezar arriba del todo (si no, se queda el scroll de la página anterior)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     let { galletas } = useContext(GalletasContext)
     let { token, usuario, cerrarSesion } = useContext(SesionContext)

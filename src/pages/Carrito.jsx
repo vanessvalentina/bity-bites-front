@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import CarritoContext from "@/context/CarritoContext"
 import SesionContext from "@/context/SesionContext"
@@ -12,8 +12,14 @@ import Footer from "@/components/Footer"
  * @hook     {useContext} SesionContext: token y datos del usuario para rellenar el formulario
  * @hook     {useState}   formulario: datos del pedido (agrupados)
  * @hook     {useState}   envio: enviando, error y pedido confirmado (agrupados)
+ * @hook     {useEffect}  subir arriba del todo al entrar
  */
 function Carrito(){
+
+    // Al entrar en la página, empezar arriba del todo (si no, se queda el scroll de la página anterior)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     let { carrito, cambiarCantidad, quitarDelCarrito, vaciarCarrito } = useContext(CarritoContext)
     let { token, usuario } = useContext(SesionContext)
